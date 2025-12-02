@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pnml xmlns="http://www.pnml.org/version-2010/grammar/pnml">
+  <net id="n2" type="http://www.pnml.org/version-2010/grammar/ptnet">
+    <name>
+      <text>Producer-Consumer Cycle (1-Safe)</text>
+    </name>
+    <page id="p1">
+      
+      <!-- P1: Producer is ready (1 token) -->
+      <place id="P1">
+        <name><text>Prod_Ready</text></name>
+        <initialMarking><text>1</text></initialMarking>
+        <graphics><position x="100" y="50"/></graphics>
+      </place>
+      
+      <!-- P2: Buffer is empty (1 token) -->
+      <place id="P2">
+        <name><text>Buff_Empty</text></name>
+        <initialMarking><text>1</text></initialMarking>
+        <graphics><position x="100" y="150"/></graphics>
+      </place>
+      
+      <!-- P3: Buffer is full (0 tokens) -->
+      <place id="P3">
+        <name><text>Buff_Full</text></name>
+        <initialMarking><text>0</text></initialMarking>
+        <graphics><position x="500" y="150"/></graphics>
+      </place>
+      
+      <!-- P4: Consumer is ready (1 token) -->
+      <place id="P4">
+        <name><text>Cons_Ready</text></name>
+        <initialMarking><text>1</text></initialMarking>
+        <graphics><position x="500" y="50"/></graphics>
+      </place>
+      
+      <!-- T1: Produce Transition -->
+      <transition id="T1">
+        <name><text>Produce</text></name>
+        <graphics><position x="300" y="100"/></graphics>
+      </transition>
+      
+      <!-- T2: Consume Transition -->
+      <transition id="T2">
+        <name><text>Consume</text></name>
+        <graphics><position x="700" y="100"/></graphics>
+      </transition>
+      
+      <!-- ARCS FOR T1 (Produce) -->
+      <arc id="A1" source="P1" target="T1"><inscription><text>1</text></inscription></arc>
+      <arc id="A2" source="P2" target="T1"><inscription><text>1</text></inscription></arc>
+      <arc id="A3" source="T1" target="P3"><inscription><text>1</text></inscription></arc>
+      <arc id="A4" source="T1" target="P1"><inscription><text>1</text></inscription></arc>
+
+      <!-- ARCS FOR T2 (Consume) -->
+      <arc id="A5" source="P3" target="T2"><inscription><text>1</text></inscription></arc>
+      <arc id="A6" source="P4" target="T2"><inscription><text>1</text></inscription></arc>
+      <arc id="A7" source="T2" target="P2"><inscription><text>1</text></inscription></arc>
+      <arc id="A8" source="T2" target="P4"><inscription><text>1</text></inscription></arc>
+      
+    </page>
+  </net>
+</pnml>

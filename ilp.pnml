@@ -1,0 +1,30 @@
+<pnml>
+  <net id="ilp" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <page id="page1">
+
+      <place id="p0">
+        <initialMarking><text>1</text></initialMarking>
+      </place>
+      <place id="p1">
+        <initialMarking><text>0</text></initialMarking>
+      </place>
+
+      <transition id="t0"/>
+      <transition id="t1"/>
+
+      <arc id="a_p0_t0" source="p0" target="t0">
+        <inscription><text>1</text></inscription>
+      </arc>
+      <arc id="a_t0_p1" source="t0" target="p1">
+        <inscription><text>1</text></inscription>
+      </arc>
+      <arc id="a_p1_t1" source="p1" target="t1">
+        <inscription><text>1</text></inscription>
+      </arc>
+      <arc id="a_t1_p0" source="t1" target="p0">
+        <inscription><text>2</text></inscription>
+      </arc>
+
+    </page>
+  </net>
+</pnml>
